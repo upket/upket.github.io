@@ -39,7 +39,7 @@ Khi ứng dụng gặp lỗi, một báo cáo (phiên bản ứng dụng, kiểu
 
 ## Liên hệ
 
-Câu hỏi về quyền riêng tư: **[EMAIL LIÊN HỆ]**
+Câu hỏi về quyền riêng tư: **info@upket.com**
 
 ---
 
@@ -77,4 +77,4 @@ The app is not directed at children and collects no one's data.
 
 ## Contact
 
-Privacy questions: **[CONTACT EMAIL]**
+Privacy questions: **info@upket.com**
