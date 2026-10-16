@@ -21,54 +21,76 @@
 <body>
 <main>
 <h1>Upket Browser – Privacy Policy</h1>
-<p class="muted">Effective date: 7 October 2026</p>
+<p class="muted">Last updated: 16 October 2026</p>
 
 <p>Upket Browser ("the app") is a web browser for Android phones and Android TV, published by Hien Nguyen ("we"). This policy explains what information the app handles and how.</p>
 
 <h2>Summary</h2>
 <ul>
   <li>We do <strong>not</strong> collect, store or sell any personal data on our servers. The app has no account, no ads and no analytics.</li>
-  <li>Your browsing history, bookmarks, tabs, settings and site permissions are stored <strong>only on your device</strong>.</li>
-  <li>Websites you visit and extensions you install may collect data under their own privacy policies.</li>
+  <li>Your browsing history, bookmarks, open tabs, settings, per-site preferences and site permissions are stored <strong>only on your device</strong>.</li>
+  <li>The app blocks ads and trackers on websites by default. You can turn this off at any time (see <em>Ad blocking</em> below).</li>
+  <li>Websites you visit may collect data under their own privacy policies.</li>
 </ul>
 
 <h2>Data stored on your device</h2>
 <div class="wrap"><table>
   <tr><th>Data</th><th>Purpose</th><th>How to delete</th></tr>
-  <tr><td>Browsing history, bookmarks, open tabs</td><td>Show history and bookmarks, restore tabs</td><td>Settings → Clear browsing data, or remove items individually</td></tr>
+  <tr><td>Browsing history, bookmarks, open tabs</td><td>Show history and bookmarks, restore tabs</td><td>Settings → Clear browsing data (history), or remove bookmarks and close tabs individually</td></tr>
   <tr><td>Cookies, cache and site data</td><td>Keep you signed in to websites, speed up pages</td><td>Settings → Clear browsing data</td></tr>
   <tr><td>Site permission choices (camera, microphone, location)</td><td>Remember what you allowed or blocked per website</td><td>Settings → Site permissions</td></tr>
-  <tr><td>Settings (search engine, desktop mode)</td><td>Remember your preferences</td><td>Uninstall the app or clear app data</td></tr>
+  <tr><td>Ad blocking settings, downloaded filter lists, sites where ads are allowed</td><td>Block ads and trackers on websites</td><td>Settings → Ad blocking, or uninstall the app</td></tr>
+  <tr><td>Per-site preferences (text size, page zoom, desktop or mobile site, pop-ups allowed)</td><td>Show each website the way you chose</td><td>Change them back from the menu on that site, or uninstall the app or clear app data</td></tr>
+  <tr><td>Settings (language, search engine, desktop mode, dark web pages, background playback)</td><td>Remember your preferences</td><td>Uninstall the app or clear app data</td></tr>
   <tr><td>Downloaded files</td><td>Files you chose to download</td><td>Delete them from your device</td></tr>
 </table></div>
-<p>Private tabs do not save history, and their cookies and site data are deleted when the last private tab is closed. App data is excluded from Android cloud backup. Uninstalling the app deletes all of it.</p>
+<p>Private tabs use a separate storage profile. Their cookies and site data are deleted when the last private tab is closed, they do not save history, and per-site choices made in them are kept in memory only until the private session ends. App data is excluded from Android cloud backup. Uninstalling the app deletes all of it.</p>
 
 <h2>Device permissions</h2>
 <p>The app asks for these permissions only to provide browser features. Camera, microphone and location are requested <strong>only when a website asks for them</strong>, and you decide per website.</p>
 <ul>
-  <li><strong>Internet</strong> – load web pages.</li>
-  <li><strong>Camera / Microphone</strong> – let websites you allow use them (for example video calls). Audio and video go directly to that website; we never receive them.</li>
+  <li><strong>Internet</strong> – load web pages, filter lists and the ad blocker's scriptlet library.</li>
+  <li><strong>Camera / Microphone</strong> – let websites you allow use them (for example video calls). Audio and video go directly to that website; we never receive them. Voice search does not use this permission (see <em>Voice search</em> below).</li>
   <li><strong>Location</strong> – let websites you allow know your location (for example maps). Location is only read while you use the app and goes only to that website.</li>
-  <li><strong>Notifications</strong> and <strong>foreground service</strong> – show download progress.</li>
+  <li><strong>Notifications</strong> and <strong>foreground service</strong> – show download progress, and keep sound from a page playing in the background on phones and tablets with a Play/Pause notification. Background playback can be turned off in Settings. The lock screen shows only "Upket Browser", and pages in private tabs are never shown.</li>
+  <li><strong>Network state</strong> – check whether your device is online, so the app can show the right error page when a page cannot load. Error pages are built into the app; no request is sent for them.</li>
   <li><strong>Install unknown apps</strong> – open an Android app file (.apk) that you downloaded yourself, when you tap it. Android asks you to confirm.</li>
 </ul>
 
+<h2>Ad blocking</h2>
+<p>Ad and tracker blocking is on by default. It runs on your device: the app compiles the filter lists and blocks matching requests and page elements locally. You can switch it off, pick which lists to use, add your own list addresses, and allow ads on individual sites in the app.</p>
+<ul>
+  <li><strong>Filter lists</strong> are downloaded from the following hosts, at most about once a day (the app sends a conditional request, so an unchanged list is not downloaded again):
+    <ul>
+      <li><code>easylist.to</code> – EasyList and EasyPrivacy, by their authors</li>
+      <li><code>raw.githubusercontent.com</code> – the Upket Vietnamese list</li>
+      <li><code>ublockorigin.github.io</code> – uBlock Origin filters and quick fixes</li>
+      <li>Any <code>https://</code> list address you add yourself</li>
+    </ul>
+  </li>
+  <li><strong>Scriptlet library</strong> – the app downloads uBlock Origin's scriptlet library once per app version, from <code>cdn.jsdelivr.net</code>, and converts it on your device. It is not bundled in the app.</li>
+</ul>
+<p>These requests contain no personal data beyond what any web request contains, such as your IP address and the app's user agent. Upket Browser uses filter lists and scriptlets from the uBlock Origin project; this does not mean the uBlock Origin project endorses the app.</p>
+
 <h2>Network connections made by the app</h2>
-<p>Besides the websites you visit:</p>
+<p>Besides the websites you visit and the ad blocking downloads above:</p>
 <ul>
   <li><strong>Search engine</strong> – what you type in the address bar is sent to the search engine you selected (Google, DuckDuckGo or Bing) when you search.</li>
-  <li><strong>addons.mozilla.org</strong> – on first launch the app downloads the uBlock Origin ad blocker, and it checks for extension updates about once a day. These requests contain no personal data beyond what any web request contains (such as your IP address).</li>
-  <li><strong>Browser engine services</strong> – the app is built on Mozilla GeckoView, which may contact services such as Safe Browsing lists to protect you from harmful sites. These requests do not include your browsing history.</li>
+  <li><strong>Android System WebView</strong> – the web engine that shows pages is provided by Android. It may use Google Safe Browsing to warn you about harmful sites, as described in Google's privacy policy. The app does not turn this feature off.</li>
+  <li><strong>Downloads</strong> – when you download a file, the app sends the cookies of that website to the same website only, so you stay signed in. Cookies are never sent to other hosts.</li>
+  <li><strong>Voice search</strong> – when you tap the microphone in the address bar, the app opens your device's speech recognizer, an app provided by your device and governed by its own privacy policy. The app only receives the recognized text, which it handles like text you typed. The app does not record audio itself.</li>
+  <li><strong>Sign-in dialogs</strong> – a user name and password you type when a site asks for them (for example a router page) go only to that site. The app does not save them.</li>
+  <li><strong>Share</strong> – when you choose Share, the page's address is passed to the app you pick.</li>
 </ul>
 
-<h2>Extensions and websites</h2>
-<p>Extensions you install (including uBlock Origin) and websites you visit are run by third parties and are governed by their own privacy policies. We do not control them.</p>
+<h2>Websites and third-party lists</h2>
+<p>Websites you visit, and the filter list authors listed above, are third parties governed by their own privacy policies. We do not control them.</p>
 
 <h2>Children</h2>
 <p>The app is not directed at children under 13 and gives unrestricted access to the internet.</p>
 
 <h2>Security</h2>
-<p>All data stays on your device under Android's app sandbox. Connections to search engines and addons.mozilla.org use HTTPS.</p>
+<p>All data stays on your device under Android's app sandbox. Connections to search engines, filter list hosts and the scriptlet library use HTTPS. Filter lists are only loaded over HTTPS.</p>
 
 <h2>Changes</h2>
 <p>We may update this policy. The new version will be posted at this address with a new effective date.</p>
