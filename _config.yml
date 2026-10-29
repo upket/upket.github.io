@@ -1,0 +1,31 @@
+# Sửa các giá trị này cho đúng với Upket
+title: Upket
+description: Apps for phone, desktop and web.
+url: "https://upket.com"
+baseurl: ""
+email: hello@upket.com
+github: https://github.com/upket
+
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed   # RSS tại /feed.xml
+
+# Bài blog: _posts/YYYY-MM-DD-<slug>.md → /writing/<slug>/
+permalink: /writing/:title/
+
+# Mỗi file trong _products/ = 1 thẻ trên trang chủ + 1 trang riêng tại /apps/<tên-file>/
+collections:
+  products:
+    output: true
+    permalink: /apps/:name/
+
+defaults:
+  - scope: { path: "" }
+    values: { layout: default }
+  - scope: { path: "", type: products }
+    values: { layout: app }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+
+exclude: [README.md, CLAUDE.md, Gemfile, Gemfile.lock, plans, docs, vendor]

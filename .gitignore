@@ -1,0 +1,20 @@
+# Jekyll build output and caches
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+.bundle/
+vendor/
+Gemfile.lock
+
+# Local tooling (not part of the site)
+.claude/
+.repomixignore
+plans/
+docs/
+
+# OS / secrets
+.DS_Store
+.env*
+*.pem
+CLAUDE.md

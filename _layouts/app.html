@@ -1,0 +1,40 @@
+---
+layout: default
+---
+{% comment %} App page: header info, store badges/links, media gallery (video first), full .md body, prev/next app. {% endcomment %}
+{% assign p = page %}
+{% assign apps = site.products | sort: "order" %}
+{% for a in apps %}{% if a.url == p.url %}{% assign i = forloop.index0 %}{% endif %}{% endfor %}
+<article class="app">
+  <header class="app-head">
+    <div class="prompt">~/upket/apps $ cat {{ p.slug }}.md</div>
+    <h1>{{ p.name }}</h1>
+    <div class="lede">{{ p.excerpt }}</div>
+    <dl class="meta">
+      {% if p.platforms %}<dt>platforms</dt><dd>{{ p.platforms | join: ", " }}</dd>{% endif %}
+      {% if p.version %}<dt>version</dt><dd>{{ p.version }}</dd>{% endif %}
+      {% if p.updated %}<dt>updated</dt><dd>{{ p.updated | date: "%Y-%m-%d" }}</dd>{% endif %}
+      {% if p.license %}<dt>license</dt><dd>{{ p.license }}</dd>{% endif %}
+      {% for f in p.facts %}<dt>{{ f[0] }}</dt><dd>{{ f[1] }}</dd>{% endfor %}
+    </dl>
+    {% include install-command.html command=p.install %}
+    {% include store-badges.html app=p %}
+    {% if p.links %}<p class="links">{% for l in p.links %}<a href="{{ l[1] }}">{{ l[0] }} ↗</a>{% endfor %}</p>{% endif %}
+  </header>
+
+  {% if p.video or p.youtube or p.screenshots %}
+  <div class="gallery" tabindex="0" aria-label="{{ p.name }} screenshots">
+    {% if p.video or p.youtube %}{% include app-media.html device=p.device src=p.image video=p.video youtube=p.youtube name=p.name %}{% endif %}
+    {% for s in p.screenshots %}{% include app-media.html device=p.device src=s name=p.name %}{% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="prose">{{ p.content | remove_first: p.excerpt }}</div>
+
+  {% if p.privacy %}<p class="pp-link"><a href="{{ p.privacy | relative_url }}">Privacy policy →</a> · <a href="{{ '/contact/' | relative_url }}">Support</a></p>{% endif %}
+
+  <nav class="pager" aria-label="Other apps">
+    {% if i > 0 %}{% assign prev_i = i | minus: 1 %}{% assign prev = apps[prev_i] %}<a href="{{ prev.url | relative_url }}">← cd ../{{ prev.slug }}</a>{% else %}<a href="{{ '/#apps' | relative_url }}">← cd ..</a>{% endif %}
+    {% assign next_i = i | plus: 1 %}{% assign next = apps[next_i] %}{% if next %}<a href="{{ next.url | relative_url }}">cd ../{{ next.slug }} →</a>{% endif %}
+  </nav>
+</article>

@@ -1,0 +1,36 @@
+---
+layout: default
+---
+{% comment %}
+  One app's privacy policy. Front matter: app (product slug), app_name, platforms, order, summary (card on /privacy/),
+  contact, effective (optional), languages (optional, e.g. [vi, en]: content then holds one .lang-panel per language).
+{% endcomment %}
+{% assign product = site.products | where: "slug", page.app | first %}
+{% assign lang_names = "vi:Tiếng Việt,en:English" | split: "," %}
+<article class="app pp-app">
+  <header class="app-head">
+    <div class="prompt">~/upket/privacy $ cat {{ page.app }}.md</div>
+    <h1>{{ page.app_name }} Privacy Policy</h1>
+    <dl class="meta">
+      <dt>app</dt><dd>{% if product %}<a href="{{ product.url | relative_url }}">{{ page.app_name }}</a>{% else %}{{ page.app_name }}{% endif %} · {{ page.platforms | join: " · " }}</dd>
+      {% if page.effective %}<dt>effective</dt><dd>{{ page.effective | date: "%B %-d, %Y" }}</dd>{% endif %}
+      <dt>contact</dt><dd><a href="mailto:{{ page.contact }}">{{ page.contact }}</a></dd>
+    </dl>
+    {% if page.languages %}
+    <div class="pp-tools"><div class="lang-tabs" role="group" aria-label="Language">
+      {% for l in page.languages %}{% for n in lang_names %}{% assign kv = n | split: ":" %}{% if kv[0] == l %}<button type="button" data-lang="{{ l }}" aria-pressed="{% if forloop.parentloop.first %}true{% else %}false{% endif %}">{{ kv[1] }}</button>{% endif %}{% endfor %}{% endfor %}
+    </div></div>
+    {% endif %}
+  </header>
+
+  <div class="prose policy">
+    {{ content }}
+    {% unless page.languages %}<p class="pp-also">This policy follows the <a href="{{ '/privacy/#general' | relative_url }}">general Upket privacy principles</a>. Questions: <a href="mailto:{{ page.contact }}">{{ page.contact }}</a>.</p>{% endunless %}
+  </div>
+
+  <nav class="pager" aria-label="Policy navigation">
+    <a href="{{ '/privacy/' | relative_url }}">← all policies</a>
+    {% if product %}<a href="{{ product.url | relative_url }}">cd ../{{ page.app }} →</a>{% endif %}
+  </nav>
+</article>
+{% if page.languages %}<script src="{{ '/assets/js/policy-language-tabs.js' | relative_url }}" defer></script>{% endif %}

@@ -1,0 +1,8 @@
+{% comment %} Official App Store / Google Play badges; artwork must stay unmodified per Apple and Google guidelines. {% endcomment %}
+{% assign p = include.app %}
+{% if p.app_store or p.google_play %}
+<div class="badges">
+  {% if p.app_store %}<a href="{{ p.app_store }}"><img src="{{ '/assets/images/badges/app-store.svg' | relative_url }}" alt="Download on the App Store" width="120" height="40"></a>{% endif %}
+  {% if p.google_play %}<a href="{{ p.google_play }}"><img src="{{ '/assets/images/badges/google-play.png' | relative_url }}" alt="Get it on Google Play" width="134" height="40"></a>{% endif %}
+</div>
+{% endif %}

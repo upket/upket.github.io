@@ -1,0 +1,8 @@
+{% comment %} One row in a post list: date, title, excerpt, tags and read time. data-tags is used by the tag filter on /writing/. {% endcomment %}
+{% assign p = include.post %}
+{% assign words = p.content | strip_html | number_of_words %}{% assign mins = words | divided_by: 200 %}{% if mins < 1 %}{% assign mins = 1 %}{% endif %}
+<a class="post-item" href="{{ p.url | relative_url }}" data-tags="{{ p.tags | join: ' ' }}">
+  <time datetime="{{ p.date | date: '%Y-%m-%d' }}">{{ p.date | date: "%b %-d, %Y" }}</time>
+  <div><h3>{{ p.title | escape }}</h3><p>{{ p.excerpt | strip_html | strip }}</p></div>
+  <div class="info">{% for t in p.tags %}<span class="tag">#{{ t }}</span>{% endfor %}<span class="tag">{{ mins }} min read</span></div>
+</a>

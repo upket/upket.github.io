@@ -1,0 +1,37 @@
+---
+layout: default
+---
+{% assign products = site.products | sort: "order" %}
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-logo"><svg class="logo" role="img" aria-label="Upket logo"><use href="#upket-logo"/></svg></div>
+    <div class="prompt">~/upket $ cat README.md</div>
+    <h1>{{ page.headline }}</h1>
+    <div class="lede">{{ content }}</div>
+  </div>
+  <div class="term" role="group" aria-label="App list">
+    <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i><span>zsh — upket</span></div>
+    <div class="term-body">
+      <div><span class="term-prompt">$</span> upket ls --apps</div>
+      {% for p in products %}
+      <a class="term-row" href="{{ p.url | relative_url }}"><span>{{ p.slug }}/</span><span>{{ p.platforms | join: ", " }}</span><span>{% if p.version %}v{{ p.version }}{% endif %}</span></a>
+      {% endfor %}
+      {% if site.posts.size > 0 %}<a class="term-row" href="{{ '/writing/' | relative_url }}"><span>writing/</span><span>Notes &amp; write-ups</span><span>new</span></a>{% endif %}
+      <div><span class="term-prompt">$</span> <span class="cursor" aria-hidden="true"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="apps">
+  {% for p in products %}{% include product-card.html product=p %}{% endfor %}
+</section>
+
+<section class="latest" id="latest">
+  <div class="section-head">
+    <div class="prompt">~/upket $ ls writing/ | head -3</div>
+    <span class="head-links">{% include rss-link.html %}<a class="more" href="{{ '/writing/' | relative_url }}">all posts →</a></span>
+  </div>
+  <div class="post-list">
+    {% for post in site.posts limit: 3 %}{% include post-item.html post=post %}{% else %}<p class="empty">No posts yet.</p>{% endfor %}
+  </div>
+</section>

@@ -1,0 +1,3 @@
+{% if include.command %}
+<div class="cmd"><code><span class="cmd-prompt" aria-hidden="true">$ </span>{{ include.command | escape }}</code><button type="button" class="copy" data-copy="{{ include.command | escape }}">copy</button></div>
+{% endif %}

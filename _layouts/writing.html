@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{% comment %} Writing index: every post, newest first, with a tag filter (assets/js/blog-tag-filter.js) and RSS link. {% endcomment %}
+<section class="app">
+  <header class="app-head">
+    <div class="prompt">~/upket $ ls -lt writing/</div>
+    <h1>{{ page.title }}</h1>
+    <div class="lede">{{ content }}</div>
+  </header>
+  <div class="blog-tools">
+    <div class="tags" id="tag-filter">
+      <button class="tag" type="button" data-t="" aria-pressed="true">all</button>
+      {%- assign tags = site.tags | sort -%}
+      {% for t in tags %}<button class="tag" type="button" data-t="{{ t[0] }}" aria-pressed="false">#{{ t[0] }}</button>{% endfor %}
+    </div>
+    {% include rss-link.html %}
+  </div>
+  <div class="post-list" id="all-posts">
+    {% for post in site.posts %}{% include post-item.html post=post %}{% else %}<p class="empty">No posts yet.</p>{% endfor %}
+  </div>
+</section>
+<script src="{{ '/assets/js/blog-tag-filter.js' | relative_url }}" defer></script>

@@ -1,0 +1,19 @@
+{% comment %}
+  One screenshot or video inside a device frame.
+  Params: device (phone | desktop | browser | plain — image as-is, no frame), src (image), video (file), youtube (id), name.
+  With video/youtube, src is used as the poster.
+{% endcomment %}
+{% assign d = include.device | default: "browser" %}
+<figure class="frame frame-{{ d }}">
+  {% if d == "desktop" or d == "browser" %}<div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>{% endif %}
+  {% if include.youtube %}
+  <a class="yt" href="https://www.youtube.com/watch?v={{ include.youtube }}" data-yt="{{ include.youtube }}" aria-label="Play {{ include.name }} demo video">
+    <img src="{% if include.src %}{{ include.src | relative_url }}{% else %}https://i.ytimg.com/vi/{{ include.youtube }}/hqdefault.jpg{% endif %}" alt="" loading="lazy">
+    <span class="play" aria-hidden="true"></span>
+  </a>
+  {% elsif include.video %}
+  <video src="{{ include.video | relative_url }}"{% if include.src %} poster="{{ include.src | relative_url }}"{% endif %} autoplay muted loop playsinline aria-label="{{ include.name }} demo video"></video>
+  {% else %}
+  <img src="{{ include.src | relative_url }}" alt="{{ include.name }} screenshot" loading="lazy">
+  {% endif %}
+</figure>

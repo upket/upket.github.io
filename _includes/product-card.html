@@ -1,0 +1,18 @@
+{% comment %} Home page card: cover media (video, or one or more cover images), short summary (first paragraph of the .md body), badges, links. {% endcomment %}
+{% assign p = include.product %}
+<article class="card">
+  {% if p.video or p.youtube or p.image or p.covers %}
+  <a class="card-media" href="{{ p.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    {% if p.covers and p.video == nil and p.youtube == nil %}{% for c in p.covers %}{% include app-media.html device=p.device src=c name=p.name %}{% endfor %}
+    {% else %}{% include app-media.html device=p.device src=p.image video=p.video youtube=p.youtube name=p.name %}{% endif %}
+  </a>
+  {% endif %}
+  <div class="card-body">
+    <div class="path">~/apps/{{ p.slug }}</div>
+    <h2><a href="{{ p.url | relative_url }}">{{ p.name }}</a></h2>
+    {% if p.platforms %}<p class="platforms">{{ p.platforms | join: " · " }}{% if p.version %} <span>v{{ p.version }}</span>{% endif %}</p>{% endif %}
+    <div class="card-text">{{ p.excerpt }}</div>
+    {% include store-badges.html app=p %}
+    <p class="links"><a href="{{ p.url | relative_url }}">cd {{ p.slug }} →</a>{% for l in p.links %}<a href="{{ l[1] }}">{{ l[0] }} ↗</a>{% endfor %}{% if p.privacy %}<a href="{{ p.privacy | relative_url }}">Privacy policy</a>{% endif %}</p>
+  </div>
+</article>

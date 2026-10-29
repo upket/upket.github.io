@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{% comment %} Blog post: title, date, read time, tags, Markdown body, older/newer links. {% endcomment %}
+{% assign words = content | strip_html | number_of_words %}{% assign mins = words | divided_by: 200 %}{% if mins < 1 %}{% assign mins = 1 %}{% endif %}
+<article class="app">
+  <header class="post-head">
+    <div class="prompt">~/upket/writing $ cat {{ page.slug }}.md</div>
+    <h1>{{ page.title | escape }}</h1>
+    <div class="meta-line">
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+      <span>{{ mins }} min read</span>
+      {% for t in page.tags %}<span class="tag">#{{ t }}</span>{% endfor %}
+    </div>
+  </header>
+
+  <div class="prose">{{ content }}</div>
+
+  <nav class="pager" aria-label="More posts">
+    {% if page.previous %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | escape }}</a>{% else %}<a href="{{ '/writing/' | relative_url }}">← all posts</a>{% endif %}
+    {% if page.next %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} →</a>{% else %}<span></span>{% endif %}
+  </nav>
+</article>
