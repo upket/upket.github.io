@@ -18,6 +18,7 @@ facts:
   root: not required
 google_play: https://play.google.com/store/apps/details?id=com.upket.upclicker
 privacy: /privacy/up-clicker/
+terms: /terms/up-clicker/
 ---
 Automate taps, swipes and zooms on your phone, with your own timing between actions. No root needed.
 

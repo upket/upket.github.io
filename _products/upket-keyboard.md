@@ -21,6 +21,7 @@ facts:                          # dòng thêm trong bảng thông số
   internet: none — works fully offline
 google_play: https://play.google.com/store/apps/details?id=com.upket.keyboard
 privacy: /privacy/upket-keyboard/
+terms: /terms/upket-keyboard/
 ---
 Vietnamese keyboard that runs entirely on your phone. Smart suggestions, your own themes — and no Internet permission.
 
