@@ -13,6 +13,6 @@
     {% if p.platforms %}<p class="platforms">{{ p.platforms | join: " · " }}{% if p.version %} <span>v{{ p.version }}</span>{% endif %}</p>{% endif %}
     <div class="card-text">{{ p.excerpt }}</div>
     {% include store-badges.html app=p %}
-    <p class="links"><a href="{{ p.url | relative_url }}">cd {{ p.slug }} →</a>{% for l in p.links %}<a href="{{ l[1] }}">{{ l[0] }} ↗</a>{% endfor %}{% if p.privacy %}<a href="{{ p.privacy | relative_url }}">Privacy policy</a>{% endif %}</p>
+    <p class="links"><a href="{{ p.url | relative_url }}">cd {{ p.slug }} →</a>{% for l in p.links %}<a href="{{ l[1] }}">{{ l[0] }} ↗</a>{% endfor %}{% if p.privacy %}<a href="{{ p.privacy | relative_url }}">Privacy policy</a>{% endif %}{% if p.terms %}<a href="{{ p.terms | relative_url }}">Terms of service</a>{% endif %}</p>
   </div>
 </article>

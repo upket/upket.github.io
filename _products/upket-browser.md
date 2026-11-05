@@ -17,6 +17,7 @@ facts:
   ad blocker: built in, on by default
 google_play: https://play.google.com/store/apps/details?id=com.upket.browser
 privacy: /privacy/upket-browser/
+terms: /terms/upket-browser/
 ---
 A simple, fast web browser for Android TV, phones and tablets — with a built-in ad blocker and the same features on every screen.
 

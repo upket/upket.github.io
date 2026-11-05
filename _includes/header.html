@@ -1,4 +1,4 @@
-{% comment %} Breadcrumb: app pages → apps/<slug>, posts → writing/<slug>, policies → privacy/<slug>, other pages → front matter "crumb". {% endcomment %}
+{% comment %} Breadcrumb: app pages → apps/<slug>, posts → writing/<slug>, policies → privacy/<slug>, terms → terms/<slug>, other pages → front matter "crumb". {% endcomment %}
 <header class="site-header">
   <div class="wrap">
     <div class="crumbs">
@@ -6,6 +6,7 @@
       {%- if page.collection == "products" %}<span class="sep">/</span><a href="{{ '/#apps' | relative_url }}">apps</a><span class="sep">/</span><span class="here">{{ page.slug }}</span>
       {%- elsif page.layout == "post" %}<span class="sep">/</span><a href="{{ '/writing/' | relative_url }}">writing</a><span class="sep">/</span><span class="here">{{ page.slug }}</span>
       {%- elsif page.layout == "policy" %}<span class="sep">/</span><a href="{{ '/privacy/' | relative_url }}">privacy</a><span class="sep">/</span><span class="here">{{ page.app }}</span>
+      {%- elsif page.layout == "terms" %}<span class="sep">/</span><a href="{{ '/terms/' | relative_url }}">terms</a><span class="sep">/</span><span class="here">{{ page.app }}</span>
       {%- elsif page.crumb %}<span class="sep">/</span><span class="here">{{ page.crumb }}</span>
       {%- endif %}
     </div>

@@ -13,6 +13,8 @@ about.md          # trang /about/
 contact.md        # trang /contact/ (email, FAQ)
 privacy/index.md  # trang /privacy/ (nguyên tắc chung + thẻ link tới từng app)
 privacy/<app>.*   # chính sách riêng của từng app, layout policy (link này dùng cho store listing)
+terms/index.md    # trang /terms/ (thẻ link tới điều khoản từng app)
+terms/<app>.*     # điều khoản riêng của từng app, layout terms
 _config.yml       # tên site, email, link GitHub
 assets/images/    # ảnh chụp màn hình (+ badges/ là badge App Store, Google Play)
 assets/videos/    # video demo
@@ -45,6 +47,7 @@ install: brew install --cask tally     # lệnh cài, có nút copy
 app_store: https://apps.apple.com/app/id...
 google_play: https://play.google.com/store/apps/details?id=...
 privacy: /privacy/tally/                # link "Privacy policy" trên thẻ + trang app
+terms: /terms/tally/                    # link "Terms of service" trên thẻ + trang app
 facts:                                 # dòng thêm trong bảng thông số
   internet: none — works fully offline
 links:
@@ -84,6 +87,25 @@ effective: 2026-10-28
 ```
 
 Link tới tab tiếng Anh: `/privacy/upket-keyboard/#en`. 3 chính sách trong `privacy/` chuyển nguyên văn từ privacy-policy.upket.com (repo `upket/upket.github.io`).
+
+## Điều khoản sử dụng của app
+
+Tạo `terms/<ten-app>.html` (hoặc `.md`), thêm `terms: /terms/<ten-app>/` vào `_products/<ten-app>.md`. Trang tự hiện thành thẻ trên `/terms/`:
+
+```yaml
+---
+layout: terms
+permalink: /terms/tally/
+title: Tally Terms of Service
+app: tally                      # trùng tên file trong _products/
+app_name: Tally
+platforms: [iOS, Android]
+order: 2                        # thứ tự thẻ trên /terms/
+summary: Một câu tóm tắt cho thẻ.
+contact: info@upket.com
+updated: 2026-11-05
+---
+```
 
 ## Viết bài (writing)
 

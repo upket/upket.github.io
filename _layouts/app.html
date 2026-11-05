@@ -31,7 +31,7 @@ layout: default
 
   <div class="prose">{{ p.content | remove_first: p.excerpt }}</div>
 
-  {% if p.privacy %}<p class="pp-link"><a href="{{ p.privacy | relative_url }}">Privacy policy →</a> · <a href="{{ '/contact/' | relative_url }}">Support</a></p>{% endif %}
+  {% if p.privacy %}<p class="pp-link"><a href="{{ p.privacy | relative_url }}">Privacy policy →</a> · {% if p.terms %}<a href="{{ p.terms | relative_url }}">Terms of service →</a> · {% endif %}<a href="{{ '/contact/' | relative_url }}">Support</a></p>{% endif %}
 
   <nav class="pager" aria-label="Other apps">
     {% if i > 0 %}{% assign prev_i = i | minus: 1 %}{% assign prev = apps[prev_i] %}<a href="{{ prev.url | relative_url }}">← cd ../{{ prev.slug }}</a>{% else %}<a href="{{ '/#apps' | relative_url }}">← cd ..</a>{% endif %}

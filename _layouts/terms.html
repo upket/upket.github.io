@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{% comment %}
+  One app's terms of service. Front matter: app (product slug), app_name, platforms, order, summary (card on /terms/),
+  contact, updated (optional).
+{% endcomment %}
+{% assign product = site.products | where: "slug", page.app | first %}
+<article class="app pp-app">
+  <header class="app-head">
+    <div class="prompt">~/upket/terms $ cat {{ page.app }}.md</div>
+    <h1>{{ page.app_name }} Terms of Service</h1>
+    <dl class="meta">
+      <dt>app</dt><dd>{% if product %}<a href="{{ product.url | relative_url }}">{{ page.app_name }}</a>{% else %}{{ page.app_name }}{% endif %} · {{ page.platforms | join: " · " }}</dd>
+      {% if page.updated %}<dt>updated</dt><dd>{{ page.updated | date: "%B %-d, %Y" }}</dd>{% endif %}
+      <dt>contact</dt><dd><a href="mailto:{{ page.contact }}">{{ page.contact }}</a></dd>
+    </dl>
+  </header>
+
+  <div class="prose policy">
+    {{ content }}
+  </div>
+
+  <nav class="pager" aria-label="Terms navigation">
+    <a href="{{ '/terms/' | relative_url }}">← all terms</a>
+    {% if product %}<a href="{{ product.url | relative_url }}">cd ../{{ page.app }} →</a>{% endif %}
+  </nav>
+</article>
